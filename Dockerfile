@@ -2,7 +2,7 @@ FROM php:7.1.2-apache
 
 # Setup the Xdebug version to install
 ENV XDEBUG_VERSION 2.5.0
-ENV XDEBUG_MD5 0d31602a6ee2ba6d2e18a6db79bdb9a2a706bcd9
+ENV XDEBUG_SHA1 0d31602a6ee2ba6d2e18a6db79bdb9a2a706bcd9
 
 COPY /php/php.ini /usr/local/etc/php/
 RUN apt-get update && apt-get install -y \
@@ -33,7 +33,7 @@ RUN a2enmod rewrite
 # Install Xdebug
 RUN set -x \
 	&& curl -SL "http://www.xdebug.org/files/xdebug-$XDEBUG_VERSION.tgz" -o xdebug.tgz \
-	&& echo $XDEBUG_MD5 xdebug.tgz | md5sum -c - \
+	&& echo $XDEBUG_SHA1 xdebug.tgz | sha1sum -c - \
 	&& mkdir -p /usr/src/xdebug \
 	&& tar -xf xdebug.tgz -C /usr/src/xdebug --strip-components=1 \
 	&& rm xdebug.* \
