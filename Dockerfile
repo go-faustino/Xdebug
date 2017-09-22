@@ -1,8 +1,8 @@
-FROM php:7.1.2-apache
+FROM php:7.1.9-apache
 
 # Setup the Xdebug version to install
-ENV XDEBUG_VERSION 2.5.0
-ENV XDEBUG_SHA1 0d31602a6ee2ba6d2e18a6db79bdb9a2a706bcd9
+ENV XDEBUG_VERSION 2.5.5
+ENV XDEBUG_SHA256 72108bf2bc514ee7198e10466a0fedcac3df9bbc5bd26ce2ec2dafab990bf1a4
 
 COPY /php/php.ini /usr/local/etc/php/
 RUN apt-get update && apt-get install -y \
@@ -36,7 +36,7 @@ RUN a2enmod rewrite
 # Install Xdebug
 RUN set -x \
 	&& curl -SL "http://www.xdebug.org/files/xdebug-$XDEBUG_VERSION.tgz" -o xdebug.tgz \
-	&& echo $XDEBUG_SHA1 xdebug.tgz | sha1sum -c - \
+	&& echo $XDEBUG_SHA256 xdebug.tgz | sha256sum -c - \
 	&& mkdir -p /usr/src/xdebug \
 	&& tar -xf xdebug.tgz -C /usr/src/xdebug --strip-components=1 \
 	&& rm xdebug.* \
