@@ -47,4 +47,4 @@ RUN set -x \
 	&& make install \
 	&& make clean
 
-COPY ext-xdebug.ini /usr/local/etc/php/conf.d/
+COPY extensions-config/* /usr/local/etc/php/conf.d/
