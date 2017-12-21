@@ -21,4 +21,5 @@ Guidelines for editing ext-xdebug.ini
   * xdebug.remote_connect_back = 1
     * xdebug detects the caller ip address. When called in a container, xdebug will detect this as the local ip address (eg: 172.17.0.1), and it should connect to the ip address on the network (eg: 192.168.1.x), so this probably won't work
 * xdebug.remote_host
-  * if remote_connect_back = 0, this must be included. Find your network ip address (ifconfig en0), and use it here
+  * if remote_connect_back = 0, set this to your host's ip address on the network. Find it with ifconfig (ipconfig on Windows), and use it here
+  * if on a Mac, you should set this to xdebug.remote_host=docker.for.mac.localhost
