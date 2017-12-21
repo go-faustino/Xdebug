@@ -1,4 +1,4 @@
-FROM php:7.1.9-apache
+FROM php:7.1.12-apache
 
 # Setup the Xdebug version to install
 ENV XDEBUG_VERSION 2.5.5
